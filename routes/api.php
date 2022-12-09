@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/projects',[App\Http\Controllers\Api\AuthController::class,'register']);
-Route::post('/auth', [App\Http\Controllers\Api\AuthController::class,'login']);
+Route::post('/projects',[App\Http\Controllers\API\AuthController::class,'register']);
+Route::post('/auth', [App\Http\Controllers\API\AuthController::class,'login']);
 
-Route::get('ceo', [App\Http\Controllers\Api\CEOController::class,'index']);
-Route::get('{service_code}/conf', [App\Http\Controllers\Api\ProjectController::class,'getSetting']);
+Route::get('ceo', [App\Http\Controllers\API\CEOController::class,'index']);
+Route::get('{service_code}/conf', [App\Http\Controllers\API\ProjectController::class,'getSetting']);
