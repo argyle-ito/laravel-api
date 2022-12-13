@@ -45,7 +45,7 @@ class ProjectController extends Controller
 "date" =>"2022-12-18",
 "search_requests" => 330,
 ]
-    ],Response::HTTP_ACCEPTED);
+    ]);
     }
     public function getGob(){
           return response()->json([
