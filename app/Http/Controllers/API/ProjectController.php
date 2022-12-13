@@ -175,8 +175,8 @@ class ProjectController extends Controller
                 break;
             default :
                  return response()->json([
-        'message' => 'Internal Server Error',
-        'details' => 'string',
+"message" =>  "Not Found",
+"details" =>"string"
     ]);
                 break;
         }
