@@ -178,7 +178,7 @@ class ProjectController extends Controller
                  return response()->json([
 "message" =>  "Not Found",
 "details" =>"string"
-    ]);
+    ],Response::HTTP_NOT_FOUND);
                 break;
         }
 
@@ -227,7 +227,7 @@ class ProjectController extends Controller
               return response()->json([
         "message" =>  "Not Found",
 "details" =>"string"
-    ]);
+              ],Response::HTTP_NOT_FOUND);
                 break;
         }
 

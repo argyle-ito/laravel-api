@@ -68,7 +68,7 @@ class Handler extends ExceptionHandler
                 case 404:
                     return response()->error(Response::HTTP_NOT_FOUND, 'Not Found');
                 case 500:
-                     return response()->error(Response::HTTP_INTERNAL_SERVER_ERROR, 'Internal Server Error');
+                     return response()->error(Response::HTTP_INTERNAL_SERVER_ERROR,'Internal Server Error');
             }
         }
     }
