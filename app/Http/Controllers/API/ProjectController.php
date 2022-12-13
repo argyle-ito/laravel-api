@@ -34,7 +34,7 @@ class ProjectController extends Controller
     public function updateGob(){
           return response()->json([
         'message' => 'Accepted',
-    ]);
+    ],Response::HTTP_ACCEPTED);
     }
     public function info(){
           return response()->json([
