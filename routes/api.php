@@ -24,6 +24,7 @@ Route::post('UYZ99/jobs.json', [App\Http\Controllers\API\ProjectController::clas
 Route::get('UYZ99/jobs', [App\Http\Controllers\API\ProjectController::class,'getGob']);
 Route::get('UYZ99/status', [App\Http\Controllers\API\ProjectController::class,'status']);
 Route::get('UYZ99/stats/2022/12', [App\Http\Controllers\API\ProjectController::class,'info']);
+
+Route::delete('PAB01', [App\Http\Controllers\API\ProjectController::class,'deleteProject']);
 Route::get('UYZ99/{filename}.csv', [App\Http\Controllers\API\ProjectController::class,'getCsv']);
 Route::put('UYZ99/{filename}.csv', [App\Http\Controllers\API\ProjectController::class,'postCsv']);
-Route::delete('PAB01', [App\Http\Controllers\API\ProjectController::class,'deleteProject']);

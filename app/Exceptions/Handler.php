@@ -45,9 +45,9 @@ class Handler extends ExceptionHandler
          * APIエラーの場合、apiErrorResponseをcall
          * WEBエラーの場合、ここでエラーハンドリングを完結する
          */
-        if ($request->is('*')) {
+
             return $this->apiErrorResponse($request, $exception);
-        }
+
 
         return parent::render($request, $exception);
     }
@@ -57,19 +57,18 @@ class Handler extends ExceptionHandler
         if ($this->isHttpException($exception)) {
             $statusCode = $exception->getStatusCode();
 
+
             switch ($statusCode) {
-                case 400:
+                    case 400:
                     return response()->error(Response::HTTP_BAD_REQUEST, 'Bad Request');
                 case 401:
                     return response()->error(Response::HTTP_UNAUTHORIZED, 'Unauthorized');
                 case 403:
                     return response()->error(Response::HTTP_FORBIDDEN, 'Forbidden');
                 case 404:
-                    return response()->json([
-						'message' => 'Not Found',
-                        'details' => 'string'
-
-					]);
+                    return response()->error(Response::HTTP_NOT_FOUND, 'Not Found');
+                case 500:
+                     return response()->error(Response::HTTP_INTERNAL_SERVER_ERROR, 'Internal Server Error');
             }
         }
     }

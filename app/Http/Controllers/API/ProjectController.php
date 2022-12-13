@@ -14,10 +14,11 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function getSetting(){
+    public function getSetting(Request $request){
+
           return response()->json([
         'sort_order' => 'score',
-    ]);
+          ],Response::HTTP_OK);
     }
     public function putSetting(){
           return response()->json([
@@ -58,7 +59,7 @@ class ProjectController extends Controller
                 ]
             ],
 
-          ]);
+          ],Response::HTTP_OK);
     }
     public function deleteProject(){
           return response()->json([
