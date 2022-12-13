@@ -42,8 +42,8 @@ class ProjectController extends Controller
 "total_search_requests"=> 330,
 "total_search_clicks"=>  55,
 "stats" => [
-"date" =>"2022-12-18",
-"search_requests" => 330,
+
+["date" =>"2022-12-18","search_requests" => 330, "search_clicks" => 55]
 ]
     ]);
     }
