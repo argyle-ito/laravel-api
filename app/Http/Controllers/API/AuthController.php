@@ -5,41 +5,46 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
     public function register(Request $request)
     {
         $validatedData = $request->validate([
+            'customer_name' => 'required|max:55',
+            'owner_name' => 'required|max:55',
+            'key' => 'required|max:55',
             'name' => 'required|max:55',
-            'url' => 'required|unique:users',
-            'key' => 'required|unique:users',
+            'url' => 'required',
             'remarks' => 'max:55',
-             'password' => 'required'
+
 
         ]);
 
 
-         $project_code = Str::random(5);
-        $service_code = Str::random(5);
+         $project_code = "PAB01";
+        $service_code = "UYZ99";
          $validatedData['project_code'] = $project_code;
          $validatedData['service_code'] = $service_code;
 
-           $validatedData['password'] = bcrypt($request->password);
+           $validatedData['password'] = bcrypt("s3cretpass");
+           $validatedData['user'] = "sample-user_1";
         $user = User::create($validatedData);
 
         $accessToken = $user->createToken('authToken')->accessToken;
 
 
 
-        return response([ 'access_token' => $accessToken,'project_code ' => $project_code,'service_code' => $service_code]);
+        return response()->json(['project_code' => $project_code,'service_code' => $service_code],Response::HTTP_CREATED);
     }
 
     public function login(Request $request)
     {
         $loginData = $request->validate([
-            'project_code' => 'required',
+            'user' => 'required',
             'password' => 'required'
         ]);
 
@@ -48,8 +53,10 @@ class AuthController extends Controller
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
+        $limited = Carbon::now()->addHours(2);
 
-        return response(['expires_at' => auth()->user(), 'token' => $accessToken]);
+
+        return response()->json([ 'token' => $accessToken,'expires_at' => $limited],Response::HTTP_OK);
 
     }
 }

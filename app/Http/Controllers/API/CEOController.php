@@ -17,11 +17,8 @@ class CEOController extends Controller
      */
     public function index()
     {
-        // $ceos = CEO::all();
-        // return response([ 'ceos' => CEOResource::collection($ceos), 'message' => 'Retrieved successfully'], 200);
-          return response()->json([
-        'sort_order' => 'score',
-    ]);
+   $ceos = CEO::all();
+        return response([ 'ceos' => CEOResource::collection($ceos), 'message' => 'Retrieved successfully']);
     }
 
     /**
