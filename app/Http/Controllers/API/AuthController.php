@@ -16,7 +16,7 @@ class AuthController extends Controller
         $validatedData = $request->validate([
             'customer_name' => 'required|max:55',
             'owner_name' => 'required|max:55',
-            'key' => 'required|max:55',
+            'key' => 'required|max:55|unique:users',
             'name' => 'required|max:55',
             'url' => 'required',
             'remarks' => 'max:55',
@@ -30,8 +30,10 @@ class AuthController extends Controller
          $validatedData['project_code'] = $project_code;
          $validatedData['service_code'] = $service_code;
 
-           $validatedData['password'] = bcrypt("s3cretpass");
-           $validatedData['user'] = "sample-user_1";
+        //    $validatedData['password'] = bcrypt("s3cretpass");
+        //    $validatedData['user'] = "sample-user_1";
+              $validatedData['user'] = "sample";
+              $validatedData['password'] = bcrypt("s3cret");
         $user = User::create($validatedData);
 
         $accessToken = $user->createToken('authToken')->accessToken;
