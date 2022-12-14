@@ -56,7 +56,7 @@ class AuthController extends Controller
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
-        $limited = Carbon::now()->addHours(2);
+        $limited = Carbon::now()->addHours(2)->toDateTimeLocalString();
 
 
         return response()->json([ 'token' => $accessToken,'expires_at' => $limited],Response::HTTP_OK);
