@@ -16,7 +16,7 @@ class AuthController extends Controller
         $validatedData = $request->validate([
             'customer_name' => 'required|max:55',
             'owner_name' => 'required|max:55',
-            'key' => 'required|max:55|unique:users',
+            'key' => 'required|max:55',
             'name' => 'required|max:55',
             'url' => 'required',
             'remarks' => 'max:55',
