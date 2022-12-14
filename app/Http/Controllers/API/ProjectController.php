@@ -14,6 +14,7 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
     public function getSetting(Request $request){
 
           return response()->json([

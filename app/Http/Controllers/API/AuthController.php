@@ -52,7 +52,7 @@ class AuthController extends Controller
         ]);
 
         if (!auth()->attempt($loginData)) {
-            return response(['message' => 'Invalid Credentials']);
+            return response(['message' => 'Unauthorized',"details" => "string"],Response::HTTP_UNAUTHORIZED);
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;

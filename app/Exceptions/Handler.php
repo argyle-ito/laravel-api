@@ -49,6 +49,7 @@ class Handler extends ExceptionHandler
             return $this->apiErrorResponse($request, $exception);
 
 
+
         return parent::render($request, $exception);
     }
 
@@ -57,9 +58,9 @@ class Handler extends ExceptionHandler
         if ($this->isHttpException($exception)) {
             $statusCode = $exception->getStatusCode();
 
-
             switch ($statusCode) {
-                    case 400:
+
+                case 400:
                     return response()->error(Response::HTTP_BAD_REQUEST, 'Bad Request');
                 case 401:
                     return response()->error(Response::HTTP_UNAUTHORIZED, 'Unauthorized');

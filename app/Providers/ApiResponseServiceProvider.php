@@ -6,15 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Response;
 class ApiResponseServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
+
 
      public function boot()
     {
