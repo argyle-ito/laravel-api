@@ -23,12 +23,7 @@ class AuthController extends Controller
 
 
         ]);
-        if($validatedData){
-                return response()->json([
-        'message' => 'Bad Request',
-        "details" => "string"
-          ],Response::HTTP_BAD_REQUEST);
-        }
+
 
 
          $project_code = "PAB01";
