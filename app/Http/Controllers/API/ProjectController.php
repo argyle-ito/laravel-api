@@ -23,7 +23,7 @@ class ProjectController extends Controller
     public function putSetting(){
           return response()->json([
         'message' => 'OK',
-    ]);
+    ],Response::HTTP_OK);
     }
     public function status(){
           return response()->json([
