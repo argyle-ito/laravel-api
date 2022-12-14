@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/projects',[App\Http\Controllers\API\AuthController::class,'register']);
+Route::post('/projects',[App\Http\Controllers\API\AuthController::class,'register'])->middleware('auth:api');;
 Route::post('/auth', [App\Http\Controllers\API\AuthController::class,'login']);
 Route::apiResource('api/ceo', 'App\Http\Controllers\API\CEOController')->middleware('auth:api');
 Route::group(['middleware' => 'auth:api'], function(){
