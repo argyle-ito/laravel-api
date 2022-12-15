@@ -85,78 +85,91 @@ array_multisort( array_map( "strtotime", $date ), SORT_ASC, $date ) ;
                   [
                 "started_at" => "2023-02-20T00:18:56+09:00",
                 "finished_at" => "2023-02-20T00:20:13+09:00",
+                "status" => "success",
                 "item_count" => 300,
                 "error_item_count" => 10
                 ],
              [
                 "started_at" => "2023-02-02T00:12:56+09:00",
-                "finished_at" => "2023-02-02T00:15:13+09:00",
-                "item_count" => 270,
-                "error_item_count" => 3
+                "finished_at" => null,
+                "status" => "running",
+                "item_count" => 0,
+                "error_item_count" => 0
                 ],
         [
                 "started_at" => "2023-01-20T00:13:56+09:00",
                 "finished_at" => "2023-01-20T00:17:13+09:00",
-                "item_count" => 240,
-                "error_item_count" => 5
+                "status" => "fail",
+                "item_count" => 0,
+                "error_item_count" => 0
                 ],
             [
                 "started_at" => "2023-01-11T00:09:56+09:00",
                 "finished_at" => "2023-01-11T00:11:13+09:00",
+                 "status" => "success",
                 "item_count" => 220,
                 "error_item_count" => 2
                 ],
                [
                 "started_at" => "2023-01-09T00:11:56+09:00",
                 "finished_at" => "2023-01-09T00:14:23+09:00",
-                "item_count" => 210,
-                "error_item_count" => 1
+                "status" => "fail",
+                "item_count" => 0,
+                "error_item_count" => 0
                 ],
          [
                 "started_at" => "2023-01-02T00:12:56+09:00",
                 "finished_at" => "2023-01-02T00:15:13+09:00",
+                     "status" => "success",
                 "item_count" => 200,
                 "error_item_count" => 0
                 ],
           [
                 "started_at" => "2022-12-24T00:02:56+09:00",
                 "finished_at" => "2022-12-24T00:04:13+09:00",
+                     "status" => "success",
                 "item_count" => 170,
                 "error_item_count" => 1
                 ],
                 [
                 "started_at" => "2022-12-22T00:04:56+09:00",
                 "finished_at" => "2022-12-22T00:05:13+09:00",
+                     "status" => "success",
                 "item_count" => 159,
                 "error_item_count" => 2
                 ],
                [
                 "started_at" => "2022-12-19T00:01:50+09:00",
                 "finished_at" => "2022-12-19T00:03:10+09:00",
+                     "status" => "success",
                 "item_count" => 148,
                 "error_item_count" => 0
                 ],
                 [
                 "started_at" => "2022-12-09T00:12:56+09:00",
                 "finished_at" => "2022-12-09T00:13:13+09:00",
+                     "status" => "success",
                 "item_count" => 145,
                 "error_item_count" => 0
                 ],
                 [
                 "started_at" => "2022-12-01T00:02:56+09:00",
                 "finished_at" => "2022-12-01T00:03:13+09:00",
+                     "status" => "success",
                 "item_count" => 140,
                 "error_item_count" => 2
                 ],
                 [
                 "started_at" => "2022-11-09T00:01:56+09:00",
                 "finished_at" => "2022-11-09T00:02:13+09:00",
+                     "status" => "success",
                 "item_count" => 130,
                 "error_item_count" => 2
                 ],
                 [
                 "started_at" => "2022-10-09T00:01:56+09:00",
                 "finished_at" => "2022-10-09T00:03:13+09:00",
+                     "status" => "success",
                 "item_count" => 124,
                 "error_item_count" => 3
                 ]
