@@ -27,7 +27,14 @@ class User extends Authenticatable
         'project_code',
         'service_code',
         'password',
-        'user'
+        'user',
+        // 'sort_order',
+        // 'synonym_dictionary',
+        // 'keyword_add_list',
+        // 'keyword_remove_list',
+        // 'default_keyword_list',
+        // 'scored_page_list',
+        // 'poplink_items'
 
 
     ];

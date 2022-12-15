@@ -24,7 +24,7 @@ Route::apiResource('api/ceo', 'App\Http\Controllers\API\CEOController')->middlew
     Route::post('UYZ99/jobs.json', [App\Http\Controllers\API\ProjectController::class,'updateGob'])->middleware('auth:api');
     Route::get('UYZ99/jobs', [App\Http\Controllers\API\ProjectController::class,'getGob'])->middleware('auth:api');
     Route::get('UYZ99/status', [App\Http\Controllers\API\ProjectController::class,'status'])->middleware('auth:api');
-    Route::get('UYZ99/stats/2022/12', [App\Http\Controllers\API\ProjectController::class,'info'])->middleware('auth:api');
+    Route::get('UYZ99/stats/{year}/{month}', [App\Http\Controllers\API\ProjectController::class,'info'])->middleware('auth:api');
 
     Route::delete('PAB01', [App\Http\Controllers\API\ProjectController::class,'deleteProject'])->middleware('auth:api');
     Route::get('UYZ99/{filename}.csv', [App\Http\Controllers\API\ProjectController::class,'getCsv'])->middleware('auth:api');

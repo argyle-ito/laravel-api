@@ -5,7 +5,11 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
+use Carbon\Carbon;
 class ProjectController extends Controller
 {
     /**
@@ -14,14 +18,15 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
+// \Log::info($users);
     public function getSetting(Request $request){
 
           return response()->json([
-        'sort_order' => 'score',
+        'sort_order' => "score",
           ],Response::HTTP_OK);
     }
-    public function putSetting(){
+    public function putSetting(Request $request)
+    {
           return response()->json([
         'message' => 'OK',
     ],Response::HTTP_OK);
@@ -38,14 +43,35 @@ class ProjectController extends Controller
         'message' => 'Accepted',
     ],Response::HTTP_ACCEPTED);
     }
-    public function info(){
+    public function info(Request $request,$year,$month){
+
+
+        for($i = 0;$i < 6; $i++){
+            $start[$i] =  Carbon::create($year, $month, "1");
+            $end[$i] = Carbon::create($year, $month, "31");
+            $min[$i] = strtotime($start[$i]);
+            $max[$i] = strtotime($end[$i]);
+            $date[$i] = rand($min[$i], $max[$i]);
+            // タイムスタンプ => Y-m-d に変換
+            $date[$i] = date('Y-m-d', $date[$i]);
+        }
+
+array_multisort( array_map( "strtotime", $date ), SORT_ASC, $date ) ;
+
+
           return response()->json([
 
 "total_search_requests"=> 330,
-"total_search_clicks"=>  55,
+"total_search_clicks"=>  200,
 "stats" => [
 
-["date" =>"2022-12-18","search_requests" => 330, "search_clicks" => 55]
+["date" =>$date[0],"search_requests" => 50, "search_clicks" => 35],
+["date" =>$date[1],"search_requests" => 70, "search_clicks" => 45],
+["date" =>$date[2],"search_requests" => 20, "search_clicks" => 10],
+["date" =>$date[3],"search_requests" => 100, "search_clicks" => 50],
+["date" =>$date[4],"search_requests" => 90, "search_clicks" => 60],
+
+
 ]
     ]);
     }
@@ -57,7 +83,80 @@ class ProjectController extends Controller
                 "finished_at" => "2022-10-09T00:03:13+09:00",
                 "item_count" => 124,
                 "error_item_count" => 3
-                ]
+                ],
+                [
+                "started_at" => "2022-11-09T00:01:56+09:00",
+                "finished_at" => "2022-11-09T00:02:13+09:00",
+                "item_count" => 130,
+                "error_item_count" => 2
+                ],
+                [
+                "started_at" => "2022-12-01T00:02:56+09:00",
+                "finished_at" => "2022-12-01T00:03:13+09:00",
+                "item_count" => 140,
+                "error_item_count" => 2
+                ],
+                [
+                "started_at" => "2022-12-09T00:12:56+09:00",
+                "finished_at" => "2022-12-09T00:13:13+09:00",
+                "item_count" => 145,
+                "error_item_count" => 0
+                ],
+                [
+                "started_at" => "2022-12-19T00:01:50+09:00",
+                "finished_at" => "2022-12-19T00:03:10+09:00",
+                "item_count" => 148,
+                "error_item_count" => 0
+                ],
+                [
+                "started_at" => "2022-12-22T00:04:56+09:00",
+                "finished_at" => "2022-12-22T00:05:13+09:00",
+                "item_count" => 159,
+                "error_item_count" => 2
+                ],
+                [
+                "started_at" => "2022-12-24T00:02:56+09:00",
+                "finished_at" => "2022-12-24T00:04:13+09:00",
+                "item_count" => 170,
+                "error_item_count" => 1
+                ],
+                [
+                "started_at" => "2023-01-02T00:12:56+09:00",
+                "finished_at" => "2023-01-02T00:15:13+09:00",
+                "item_count" => 200,
+                "error_item_count" => 0
+                ],
+                [
+                "started_at" => "2023-01-09T00:11:56+09:00",
+                "finished_at" => "2023-01-09T00:14:23+09:00",
+                "item_count" => 210,
+                "error_item_count" => 1
+                ],
+                [
+                "started_at" => "2023-01-11T00:09:56+09:00",
+                "finished_at" => "2023-01-11T00:11:13+09:00",
+                "item_count" => 220,
+                "error_item_count" => 2
+                ],
+                [
+                "started_at" => "2023-01-20T00:13:56+09:00",
+                "finished_at" => "2023-01-20T00:17:13+09:00",
+                "item_count" => 240,
+                "error_item_count" => 5
+                ],
+                [
+                "started_at" => "2023-02-02T00:12:56+09:00",
+                "finished_at" => "2023-02-02T00:15:13+09:00",
+                "item_count" => 270,
+                "error_item_count" => 3
+                ],
+                [
+                "started_at" => "2023-02-20T00:18:56+09:00",
+                "finished_at" => "2023-02-20T00:20:13+09:00",
+                "item_count" => 300,
+                "error_item_count" => 10
+                ],
+
             ],
 
           ],Response::HTTP_OK);
@@ -187,6 +286,8 @@ class ProjectController extends Controller
     }
         public function postCsv(Request $request,$id){
         $fileName = $id;
+
+        // \Log::info($request->csv);
            switch ($fileName) {
             case 'synonym_dictionary':
                   return response()->json([
