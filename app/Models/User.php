@@ -28,7 +28,7 @@ class User extends Authenticatable
         'service_code',
         'password',
         'user',
-        // 'sort_order',
+        'sort_order',
         // 'synonym_dictionary',
         // 'keyword_add_list',
         // 'keyword_remove_list',

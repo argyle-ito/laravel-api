@@ -21,12 +21,23 @@ class ProjectController extends Controller
 // \Log::info($users);
     public function getSetting(Request $request){
 
+        $user= User::where('service_code', 'UYZ99')->firstOrFail();
+
           return response()->json([
-        'sort_order' => "most_recent",
+        'sort_order' => $user->sort_order,
           ],Response::HTTP_OK);
     }
     public function putSetting(Request $request)
     {
+        $user= User::where('service_code', 'UYZ99')->firstOrFail();
+
+        $res = $request->sort_order;
+        // \Log::info($res);
+
+        $user->sort_order = $res;
+
+        $user->save();
+
           return response()->json([
         'message' => 'OK',
     ],Response::HTTP_OK);
