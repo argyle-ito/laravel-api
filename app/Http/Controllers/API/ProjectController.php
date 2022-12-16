@@ -272,12 +272,19 @@ array_multisort( array_map( "strtotime", $date ), SORT_ASC, $date ) ;
         $fileName = $id;
               $cvsList = [
              ['フィールド名', '項目', '必須']
-             , ['keyword', '表示するキーワード', '○']
+             , ['keyword', '見出し語', '○'],
+              ['url', 'URL', '○'],
+               ['score', 'スコア', '○'],
+                ['remarks', '備考', ],
 
         ];
               $data = [
-             ['フィールド名', '項目', '必須']
-             , ['keyword', '表示するキーワード', '○']
+          ['フィールド名', '項目', '必須']
+             , ['keyword', '見出し語', '○'],
+              ['url', 'URL', '○'],
+               ['score', 'スコア', '○'],
+                ['remarks', '備考', ],
+
 
         ];
            switch ($fileName) {
