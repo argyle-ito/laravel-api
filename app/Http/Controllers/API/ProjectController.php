@@ -22,7 +22,7 @@ class ProjectController extends Controller
     public function getSetting(Request $request){
 
           return response()->json([
-        'sort_order' => "score",
+        'sort_order' => "most_recent",
           ],Response::HTTP_OK);
     }
     public function putSetting(Request $request)
