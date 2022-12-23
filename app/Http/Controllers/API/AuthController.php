@@ -44,7 +44,8 @@ class AuthController extends Controller
         // return response()->json(['project_code' => $project_code,'service_code' => $service_code],Response::HTTP_CREATED);
          return response()->json([
         'project_code' => 'PAB01',
-        "service_code" => "UYZ99"
+        "service_code" => "UYZ99",
+        "uid" => "abcdefghijklmnopqrstuvwxyz"
     ],Response::HTTP_CREATED);
     }
 

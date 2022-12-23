@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 class ProjectController extends Controller
 {
     /**
@@ -55,35 +56,39 @@ class ProjectController extends Controller
     ],Response::HTTP_ACCEPTED);
     }
     public function info(Request $request,$year,$month){
+    $end = 	Carbon::create($year, $month)->endOfMonth()->toDateString();
+    $start = Carbon::create($year, $month)->startOfMinute()->toDateString();
+$period = CarbonPeriod::create($start, $end)->toArray();
 
+foreach($period as $p){
+    $test[] = $p->format("Y-m-d");
+}
 
-        for($i = 0;$i < 6; $i++){
-            $start[$i] =  Carbon::create($year, $month, "1");
-            $end[$i] = Carbon::create($year, $month, "31");
-            $min[$i] = strtotime($start[$i]);
-            $max[$i] = strtotime($end[$i]);
-            $date[$i] = rand($min[$i], $max[$i]);
-            // タイムスタンプ => Y-m-d に変換
-            $date[$i] = date('Y-m-d', $date[$i]);
+        for($i = 0;$i < count($test); $i++){
+
+            $stats[$i]["date"] = $test[$i];
+             $stats[$i]["search_requests"] = rand(20,100);
+             $stats[$i]["search_clicks"] = rand(20,100);
+
         }
 
-array_multisort( array_map( "strtotime", $date ), SORT_ASC, $date ) ;
+
+        $total_requests = array_sum(array_column($stats, 'search_requests'));
+
+        $total_clicks = array_sum(array_column($stats, 'search_clicks'));
+
 
 
           return response()->json([
 
-"total_search_requests"=> 330,
-"total_search_clicks"=>  200,
-"stats" => [
+"total_search_requests"=> $total_requests,
+"total_search_clicks"=>  $total_clicks,
+"stats" =>
 
-["date" =>$date[0],"search_requests" => 50, "search_clicks" => 35],
-["date" =>$date[1],"search_requests" => 70, "search_clicks" => 45],
-["date" =>$date[2],"search_requests" => 20, "search_clicks" => 10],
-["date" =>$date[3],"search_requests" => 100, "search_clicks" => 50],
-["date" =>$date[4],"search_requests" => 90, "search_clicks" => 60],
+$stats
 
 
-]
+
     ]);
     }
     public function getGob(){
